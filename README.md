@@ -1,4 +1,4 @@
-# Income Census Dataset - Classification :
+# Census Income Dataset - Classification:
 
 https://archive.ics.uci.edu/ml/datasets/Census+Income
 

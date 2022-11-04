@@ -5,6 +5,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
+
 scalar = pickle.load(open("Census_Income_scaler.pkl", "rb"))
 income_model = pickle.load(open("Census_Income_RFC.pkl", "rb"))
 
