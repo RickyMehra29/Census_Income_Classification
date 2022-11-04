@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body style="background-color:#1cefff";>
+ <div class="login">
+	<h1 style="text-align: center; background-color:#ffff1c;" >Census Income Prediction Model - Classification</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+      <table>
+        <form action="{{ url_for('predict_api')}}"method="post">
+            <tr>
+                <td>
+                    <label style="font-weight: bold;">
+                            Age:
+                    </label>
+                </td>
+                <td><input type="text" name="age" placeholder="17-90" required="required" /><br>
+                </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Workclass:
+                  </label>
+              </td>
+              <td><select id="workclass" name="workclass" placeholder="workclass">
+                <option value="Private">Private</option>
+                <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                <option value="Local-gov">Local-gov</option>
+                <option value="State-gov">State-gov</option>
+                <option value="Self-emp-inc">Self-emp-inc</option>
+                <option value="Federal-gov">Federal-gov</option>
+                <option value="Without-pay">Without-pay</option>
+              </select> <br>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    fnlwgt:
+                  </label>
+              </td>
+              <td><input type="text" name="fnlwgt" placeholder="13769-1484705" required="required" /><br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Education:
+                  </label>
+              </td>
+              <td><select id="education" name="education" placeholder="education">
+                <option value="HS-grad">HS-grad</option>
+                <option value="Some-college">Some-college</option>
+                <option value="Bachelors">Bachelors</option>
+                <option value="School">School</option>
+                <option value="Assoc-voc">Assoc-voc</option>
+                <option value="Assoc-acdm">Assoc-acdm</option>
+                <option value="Assoc-acdm">Assoc-acdm</option>
+                <option value="Doctorate">Doctorate</option>
+                <br>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Marital_status:
+                  </label>
+              </td>
+              <td><select id="Marital_status" name="Marital_status" placeholder="Marital_status">
+                <option value="Married-civ-spouse">Married-civ-spouse</option><br>
+                <option value="Never-married">Never-married</option><br>
+                <option value="Divorced">Divorced</option><br>
+                <option value="Separated">Separated</option><br>
+                <option value="Widowed">Widowed</option><br>
+                <option value="Married-spouse-absent">Married-spouse-absent</option><br>
+                <option value="Married-AF-spouse">Married-AF-spouse</option><br>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Occupation:
+                  </label>
+              </td>
+              <td><select id="Occupation" name="Occupation" placeholder="Occupation">
+                <option value="Prof-specialty">Prof-specialty</option>
+                <option value="Craft-repair">Craft-repair</option>
+                <option value="Exec-managerial">Exec-managerial</option>
+                <option value="Adm-clerical">Adm-clerical</option>
+                <option value="Sales">Sales</option>
+                <option value="Other-service">Other-service</option>
+                <option value="Machine-op-inspct">Machine-op-inspct</option>
+                <option value="Transport-moving">Transport-moving</option>
+                <option value="Handlers-cleaners">Handlers-cleaners</option>
+                <option value="Farming-fishing">Farming-fishing</option>
+                <option value="Tech-support">Tech-support</option>
+                <option value="Protective-serv">Protective-serv</option>
+                <option value="Priv-house-serv'">Priv-house-serv'</option>
+                <option value="Armed-Forces">Armed-Forces</option>
+                <br>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Relationship:
+                  </label>
+              </td>
+              <td><select id="Relationship" name="Relationship" placeholder="Relationship">
+                <option value="Husband">Husband</option>
+                <option value="Wife">Wife</option>
+                <option value="Not-in-family">Not-in-family</option>
+                <option value="Own-child">Own-child</option>
+                <option value="Unmarried">Unmarried</option>
+                <option value="Other-relative">Other-relative</option>
+                <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Race:
+                  </label>
+              </td>
+              <td><select id="Race" name="Race" placeholder="Race">
+                <option value="White">White</option>
+                <option value="Black">Black</option>
+                <option value="Other">Other</option>
+                <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Sex:
+                  </label>
+              </td>
+              <td><select id="Sex" name="Sex" placeholder="Sex">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Capital-gain:
+                  </label>
+              </td>
+              <td><input type="text" name="Capital-gain" placeholder="0-41310" required="required" /><br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                  Capital-loss:
+                  </label>
+              </td>
+              <td><input type="text" name="capital-loss" placeholder="0-4356" required="required" /><br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                  Hours-per-week	:
+                  </label>
+              </td>
+              <td><input type="text" name="hours-per-week" placeholder="1-99" required="required" /><br>
+              </td>
+            </tr>
+      </table>
+      
+      <br><br>     
+
+        <button  style="font-weight: bold;" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+ </div>
+ {{output_text}}
+
+ <br>
+ <br>
+ 
+
+</body>
+</html>
